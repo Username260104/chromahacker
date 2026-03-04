@@ -11,7 +11,7 @@ import {
     MONOCHROME_COLOR,
     WHITE_COLOR,
     BLACK_COLOR
-} from './constants.js';
+} from './Config.js';
 
 /**
  * 전역 상태 객체 (UI 연동)
@@ -285,12 +285,47 @@ function bindEvents() {
         state.enableBloom = e.target.checked;
     });
 
+    // 8. 패널 표시/숨기기 토글 (단축키 'q' 또는 'Q')
+    window.addEventListener('keydown', (e) => {
+        if (e.key.toLowerCase() === 'q') {
+            const panel = document.getElementById('control-panel');
+            // getComputedStyle 또는 인라인 스타일을 확인하여 display 토글
+            if (window.getComputedStyle(panel).display === 'none') {
+                panel.style.display = 'flex';
+            } else {
+                panel.style.display = 'none';
+            }
+        }
+    });
+
     // 브라우저 리사이징 시 비디오 종횡비가 깨지지 않게 해상도를 재계산 (비디오 소스 변경 시에도)
     window.addEventListener('resize', adjustCanvasSize);
 }
 
+/**
+ * UI 설정 초기화
+ * 전역 상태(Config 기반)를 참조하여 슬라이더와 체크박스의 초기값을 동기화
+ */
+function initUI() {
+    thresholdSlider.value = state.saturationThreshold;
+    thresholdLabel.textContent = `${state.saturationThreshold}%`;
+
+    densitySlider.value = state.asciiDensity;
+    densityLabel.textContent = `${state.asciiDensity}px`;
+
+    delaySlider.max = MAX_DELAY_FRAMES;
+    delaySlider.value = state.delayFrames;
+    delayLabel.textContent = `${state.delayFrames}F`;
+
+    colorSelect.value = state.colorMode;
+    textOnlyCheckbox.checked = state.textOnlyMode;
+    hideTextBackgroundCheckbox.checked = state.hideTextBackground;
+    enableBloomCheckbox.checked = state.enableBloom;
+}
+
 // 애플리케이션 진입점
 function bootstrap() {
+    initUI();
     bindEvents();
     initCamera();
 }

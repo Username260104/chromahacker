@@ -9,9 +9,9 @@ export const ASCII_CHARS = " .,:;+*?%S#@".split('');
 export const ASCII_CHARS_REVERSED = [...ASCII_CHARS].reverse();
 
 // 렌더링 초기 값
-export const DEFAULT_SATURATION_THRESHOLD = 50; // 기본 채도 기준 (0~100)
-export const DEFAULT_ASCII_DENSITY = 10;        // 기본 픽셀 블록 크기 (px)
-export const DEFAULT_DELAY_FRAMES = 0;          // 기본 렌더링 딜레이 (프레임)
+export const DEFAULT_SATURATION_THRESHOLD = 12; // 기본 채도 기준 (0~100)
+export const DEFAULT_ASCII_DENSITY = 24;        // 기본 픽셀 블록 크기 (px)
+export const DEFAULT_DELAY_FRAMES = 30;          // 기본 렌더링 딜레이 (프레임)
 export const MAX_DELAY_FRAMES = 60;             // 최대 딜레이 허용치 (약 1초)
 export const MAX_BLOOM_BLUR = 20;               // 최대 발광 수준 (px)
 

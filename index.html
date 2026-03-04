@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chroma Hacker - 실시간 스트리밍 채도 마스킹</title>
+    <title></title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -19,10 +19,10 @@
 
         <!-- Glassmorphism 스타일 사용자 제어 패널 -->
         <div id="control-panel">
-            <h1>Chroma Hacker</h1>
+
 
             <div class="control-group">
-                <label for="saturationThreshold">채도 임곗값 (Saturation Threshold)</label>
+                <label for="saturationThreshold">Saturation Threshold</label>
                 <div class="slider-container">
                     <input type="range" id="saturationThreshold" min="0" max="100" value="50">
                     <span id="saturationValue">50%</span>
@@ -30,7 +30,7 @@
             </div>
 
             <div class="control-group">
-                <label for="asciiDensity">ASCII 밀도 (Density)</label>
+                <label for="asciiDensity">ASCII Density</label>
                 <div class="slider-container">
                     <input type="range" id="asciiDensity" min="4" max="24" value="10" step="2">
                     <span id="densityValue">10px</span>
@@ -38,7 +38,7 @@
             </div>
 
             <div class="control-group">
-                <label for="asciiDelay">ASCII 반영 딜레이 (Frames)</label>
+                <label for="asciiDelay">ASCII Frames</label>
                 <div class="slider-container">
                     <input type="range" id="asciiDelay" min="0" max="60" value="0" step="1">
                     <span id="delayValue">0F</span>
@@ -46,7 +46,7 @@
             </div>
 
             <div class="control-group">
-                <label for="colorMode">ASCII 렌더링 색상 모드</label>
+                <label for="colorMode">ASCII Mode</label>
                 <select id="colorMode">
                     <option value="original">원본 색상 유지</option>
                     <option value="monochrome">초록색 터미널 (Matrix 스타일)</option>

@@ -8,19 +8,30 @@
   - `ai/SPEC.md`를 통해 Vanilla Javascript 기반 프로젝트 사양 문서화 완료.
   - 구현 계획 수립 완료.
 
+## [2026-03-04] UI 패널 토글(단축키) 기능 추가 및 기본 숨김 처리
+- **작업자**: AI
+- **설명**:
+  - `style.css`에서 제어 패널의 기본 상태를 숨김(`display: none`)으로 변경
+  - `js/script.js` 전역 키보드 이벤트 리스너를 추가하여 'Q' 키 입력 시 패널을 열고 닫을 수 있는 토글 기능 구현
+
+## [2026-03-04] UI 초기화 (Config 반영 버그) 수정
+- **작업자**: AI
+- **설명**:
+  - `Config.js`의 초기값이 렌더링 시점에 즉시 UI 요소(슬라이더, 라벨, 체크박스)에 바인딩되지 않던 문제를 수정함. `index.html` 내 하드코딩된 값 대신 `js/script.js`의 `initUI` 함수를 통해 동적 초기화.
+
 ## [2026-03-04] 채도 기반 발광(Bloom) 효과 추가
 - **작업자**: AI
 - **설명**:
   - `index.html`에 발광 효과 On/Off 제어용 체크박스 추가
   - `js/script.js` 렌더링 루프 내에서 Canvas `shadowBlur` 및 `shadowColor` 속성을 활용해 원본 픽셀의 채도(S) 값에 비례하는 텍스트 발광 효과 구현
-  - `js/constants.js`에 발광 최대치(MAX_BLOOM_BLUR) 상수 정의
+  - `js/Config.js`에 발광 최대치(MAX_BLOOM_BLUR) 상수 정의
 
 ## [2026-03-04] 아스키 텍스트 반영 딜레이 기능 추가
 - **작업자**: AI
 - **설명**:
   - `index.html`에 ASCII 렌더링 지연 프레임을 조절할 수 있는 슬라이더 UI 추가
   - `js/script.js`에 `ImageData` 기반의 원형 버퍼(Ring Buffer)를 구현하여 과거 프레임을 참조해 렌더링하도록 딜레이 로직 구현 (최대 60프레임)
-  - `js/constants.js`에 딜레이 기본/최대값 상수 정의
+  - `js/Config.js`에 딜레이 기본/최대값 상수 정의
 
 ## [2026-03-04] 텍스트 배경 가림막 제거(투명 배경화) 추가
 - **작업자**: AI
@@ -33,12 +44,12 @@
 - **설명**:
   - `index.html`에 배경 화면 숨기기 옵션 UI 추가
   - `js/script.js`에 배경을 숨기고 검은색으로 채우는 텍스트 온리 모드(textOnlyMode) 렌더링 로직 추가
-  - `js/constants.js`에 `BLACK_COLOR` 상수 추가
+  - `js/Config.js`에 `BLACK_COLOR` 상수 추가
 
 ## [2026-03-04] 프론트엔드 및 비전 로직 구현 완료
 - **작업자**: AI
 - **설명**:
   - `index.html`, `style.css` 작성 (Glassmorphism UI 적용)
-  - `js/constants.js` 분리로 매직 넘버 배제 원칙 준수
+  - `js/Config.js` 분리로 매직 넘버 배제 원칙 준수
   - `js/script.js` 작성 (웹캠 연동, 오프스크린 캔버스를 활용한 HSL 채도 픽셀 분석 및 ASCII 문자 오버레이 로직 구현)
   - 사용자가 확인한 바에 따라 정상 동작함. 에이전트 브라우저 도구 한계로 인한 오류 반복은 중단 조치 처리.
