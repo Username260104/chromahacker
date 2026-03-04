@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chroma Hacker - 실시간 스트리밍 채도 마스킹</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app-container">
+        <!-- 오프스크린 용도로 쓰일 비디오 엘리먼트 (사용자에게는 보이지 않음) -->
+        <video id="webcam" autoplay playsinline style="display: none;"></video>
+
+        <!-- 실시간 렌더링을 담당하는 메인 캔버스 -->
+        <canvas id="mainCanvas"></canvas>
+
+        <!-- Glassmorphism 스타일 사용자 제어 패널 -->
+        <div id="control-panel">
+            <h1>Chroma Hacker</h1>
+
+            <div class="control-group">
+                <label for="saturationThreshold">채도 임곗값 (Saturation Threshold)</label>
+                <div class="slider-container">
+                    <input type="range" id="saturationThreshold" min="0" max="100" value="50">
+                    <span id="saturationValue">50%</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="asciiDensity">ASCII 밀도 (Density)</label>
+                <div class="slider-container">
+                    <input type="range" id="asciiDensity" min="4" max="24" value="10" step="2">
+                    <span id="densityValue">10px</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="asciiDelay">ASCII 반영 딜레이 (Frames)</label>
+                <div class="slider-container">
+                    <input type="range" id="asciiDelay" min="0" max="60" value="0" step="1">
+                    <span id="delayValue">0F</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label for="colorMode">ASCII 렌더링 색상 모드</label>
+                <select id="colorMode">
+                    <option value="original">원본 색상 유지</option>
+                    <option value="monochrome">초록색 터미널 (Matrix 스타일)</option>
+                    <option value="white">흰색</option>
+                </select>
+            </div>
+
+            <div class="control-group"
+                style="flex-direction: row; justify-content: flex-start; align-items: center; gap: 8px;">
+                <input type="checkbox" id="textOnlyMode" style="width: auto;">
+                <label for="textOnlyMode" style="margin-bottom: 0;">배경 화면 숨기기 (텍스트만)</label>
+            </div>
+
+            <div class="control-group"
+                style="flex-direction: row; justify-content: flex-start; align-items: center; gap: 8px;">
+                <input type="checkbox" id="hideTextBackground" style="width: auto;" checked>
+                <label for="hideTextBackground" style="margin-bottom: 0;">텍스트 배경 가림막 없애기</label>
+            </div>
+
+            <div class="control-group"
+                style="flex-direction: row; justify-content: flex-start; align-items: center; gap: 8px;">
+                <input type="checkbox" id="enableBloom" style="width: auto;" checked>
+                <label for="enableBloom" style="margin-bottom: 0;">채도 비례 발광(Bloom) 효과</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- 로직 스크립트 연결 (ES6 Module 명시) -->
+    <script type="module" src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    overflow: hidden; /* 스크롤 방지 */
+    width: 100vw;
+    height: 100vh;
+}
+
+#app-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 캔버스가 화면 전체를 채우되, 원본 비율을 유지하도록 설정 (object-fit: contain 처럼 작동하게 JS에서 핸들링) */
+#mainCanvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Glassmorphism 패널 스타일 */
+#control-panel {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 340px;
+    padding: 24px;
+    z-index: 10;
+    
+    background: rgba(20, 20, 25, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#control-panel h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    text-align: center;
+    background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group label {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 커스텀 슬라이더 스타일 */
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #4facfe;
+    cursor: pointer;
+    margin-top: -6px; /* 트랙 중앙 정렬 */
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.6);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+span {
+    font-size: 0.85rem;
+    min-width: 40px;
+    text-align: right;
+    font-variant-numeric: tabular-nums; /* 숫자 폭 고정 */
+}
+
+/* 드롭다운 스타일 */
+select {
+    width: 100%;
+    padding: 10px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s;
+}
+
+select:focus {
+    border-color: #4facfe;
+}
+
+select option {
+    background-color: #1e1e24; /* 모바일/기본 드롭다운 뷰를 위해 색상 지정 */
+    color: white;
+}
